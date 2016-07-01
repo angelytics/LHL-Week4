@@ -1,0 +1,21 @@
+<h1 class='text-center'> New Music </h1>
+
+<% if @music && @music.errors.any? %>
+	<div>
+		<h3>
+			<strong>Some issues with your message, please fix them:</strong>
+		</h3> 
+		<ul>
+			<% @music.errors.full_messages.each do |message| %>
+				<li class="alert alert-danger" role='alert'><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<form method="post" action="/music/new" >
+	Title: <input type="text" class='form-control' name="title" value=<%=@music && @music.title %>><br>
+	Author: <input type="text" class='form-control'name="author" value=<%=@music && @music.author %>><br>
+	URL: <input type="text" class='form-control'name="url" value=<%= @music && @music.url%>><br>
+	<input type="submit" value="submit" class="btn btn-primary btn-lg">
+</form> 

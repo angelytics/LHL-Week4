@@ -1,0 +1,22 @@
+<div class="row">
+	 <div class="col-sm-offset-0 col-sm-12 col-md-offset-4 col-md-6">
+	 <h1> login</h1> 
+<% if @failed %>
+		<h2><p class="label label-warning ">     Login Failed     </p>  </h2> 
+	<%end%>
+	</div> 
+<form action="/login" method="POST">
+	 <div class="col-sm-offset-0 col-sm-12 col-md-offset-4 col-md-6">
+	<p> Name:</p> 	
+	<input type='text' name='username'>
+	<p>Passsword: </p> 
+	<input type='password' name='password'>
+	</div> 
+	 <div class="col-sm-offset-0 col-sm-12 col-md-offset-4 col-md-6">
+	<p> </p>   
+	<p> </p>   
+	<input class="btn btn-info" type='submit' name='submit' value='Submit'>
+	<a href="/register" ><button type="button" class="btn btn-info"> New User </button> </a>
+	</div> 
+</form> 
+</div> 

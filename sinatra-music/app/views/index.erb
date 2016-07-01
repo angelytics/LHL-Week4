@@ -1,0 +1,33 @@
+<h1 class="text-center">Home Page <%= request.cookies["music_app"]%></h1>
+
+<a href="/music/new"> <button type="button" class="btn btn-primary"> New Post </button> </a> 
+<table class="table table-striped table-hover" data-link="row">
+	<thead>
+		<h4>
+		<th>ID </th> 
+		<th>Music </th>
+		<th>Likes </th>	
+		<th>Author </th>
+	 	<th>Poster </th>		
+		<th>Added on </th> 
+	</h4> 
+	</thead> 
+<% @musics.reverse.each do |music|%>
+	<tbody>
+		<tr>
+			<td><%= music.id %> </td> 
+			<td><a href="/music/<%= music.id %>"> <%= music.title %></a> </td> 
+				<td> <a href="/music/<%= music.id %>/like"><% if liked?(music) %>
+						<i class="fa fa-thumbs-up"></i>
+					<% else %>
+						<i class="fa fa-thumbs-o-up"></i>					<% end %>
+					<%= Like.where(music_id:music.id).count %>
+			</a>
+				</td>
+			<td><%= music.author %> </td> 
+			<td><%= music.user.username %> </td> 
+			<td><%= music.created_at.strftime("%H:%M") %>	</td> 
+		</tr> 
+	</tbody> 
+<% end %>
+</table>

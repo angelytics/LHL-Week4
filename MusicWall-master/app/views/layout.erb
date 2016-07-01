@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css" />
+  <link rel="stylesheet" href="/stylesheets/application.css" />
+
+  <title></title>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#pageNav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+
+      <a class="navbar-brand" href="/">Music App</a>
+    </div>
+    <div class="collapse navbar-collapse" id="pageNav">
+      <ul class="nav navbar-nav">
+        <li class=<%= @curr_page == :home ? 'active' : ''%>><a href="/">Home</a></li>
+        <li class=<%= @curr_page == :find ? 'active' : ''%>><a href="/tracks/find">Find</a></li>
+        <% unless logged_in? %>
+          <li class=<%= @curr_page == :login ? 'active' : ''%>><a href='/login'>Login</a></li>
+        <% else %>
+          <li class=<%= @curr_page == :new ? 'active' : ''%>><a href="/tracks/new">New</a></li>
+          <li><a href='/logout'>Logout</a></li>
+          <li><a href=''>Logged in as: <%= get_user.user_name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+    <section class="container">
+      <%= yield %>
+    </section>
+
+  <script src="/javascript/jquery-2.1.4.js"></script>
+  <script src="/bootstrap/js/bootstrap.js"></script>
+  <script src="/javascript/application.js"></script>
+</body>
+</html>

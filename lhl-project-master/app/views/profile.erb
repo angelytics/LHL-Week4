@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="jumbotron" id="dynamic-load">
+                <!-- action="/signup" method="post" -->
+                <form action="/profile/edit" method="POST">
+                    <legend>Update your personal profile!</legend>
+                    <div class="form-group">
+                        <label for="first-name-field">First name:</label>
+                        <input type="name" name="firstname" class="form-control" id="first-name-field" value=<%= @user.firstname %>>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name-field">Last name:</label>               
+                        <input type="name" name="lastname" class="form-control" id="last-name-field" value=<%= @user.lastname %>>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-field">Email:</label>               
+                        <input type="email" name="email" class="form-control" id="email-field" value=<%= @user.username %>>
+                    </div>
+                    <!-- <span>Gender:</span> -->
+                    <!-- <div class="radio">
+                        <label for="male-field">
+                            <input type="radio" name="gender" id="male-field"Gender>
+                            Male
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="female-field">
+                            <input type="radio" name="gender" id="female-field"Gender>
+                            Female
+                        </label>
+                    </div> -->
+                    <div class="form-group">
+                        <button class="btn btn-default" id="btn-show-password" type="button">Change Password</button>
+                    </div>
+                    <!-- on button click make this visible -->
+                    <div class="password-visibility">
+                        <div class="form-group">
+                            <label for="password-field">New password:</label>               
+                            <input type="password" name="password" class="form-control" id="password-field">
+                        </div>
+                        <div class="form-group">
+                            <label for="retype-password-field">Retype new password:</label>               
+                            <input type="password" class="form-control" id="retype-password-field">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default" id="btn-submit" type="submit">Update Info</button>
+                        <span id="error-msg"><span>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+</div>

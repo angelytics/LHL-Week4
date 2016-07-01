@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-12">
+    <% unless @track %>
+      <h1 class="text-danger">Track Not Found! :(</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 well well-md">
+    <h3 class="text-warning">We couldn't find a track with id: <%= @id %></h3>
+  </div>
+</div>
+    <% else %>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 well well-md">
+        <h3>Title:</h3>
+        <p><%= @track.title %></p>
+
+        <h3>Author:</h3>
+        <p><%= @track.author %></p>
+
+      <% if @track.url %>
+        <h3>Url:</h3>
+        <a href='<%= @track.url %>'><%= @track.url %></a>
+      <% end %>
+  </div>
+</div>
+    <% end %>

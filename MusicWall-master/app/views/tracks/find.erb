@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="">Find Track</h1>
+  </div>
+</div>
+
+<% if @track.nil? && @title %>
+  <h2 class="text-warning">No tracks found 
+    <% if @title %>
+     with Title: '<%= @title %>'</h2>
+    <% else %>
+      </h2>
+    <% end %>
+  <hr />
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12 well well-lg">
+    <form method="GET" role="form">
+      <div class="form-group">
+        <label for="title">Track Title: </label>
+        <input type="text" class="form-control" placeholder="Track title" name="title" />
+      </div>
+
+      <button type="submit" class="btn btn-primary pull-right">Search</button>
+    </form>
+  </div>
+</div>

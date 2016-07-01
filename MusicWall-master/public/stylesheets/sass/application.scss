@@ -1,0 +1,67 @@
+$primary-0: #80E527;
+$primary-1: #AFF075;
+$primary-2: #96E94B;
+$primary-3: #61CB03;
+$primary-4: #4A9E00;
+
+$secondary-0: #FF652C;
+$secondary-1: #FFA07C;
+$secondary-2: #FF8152;
+$secondary-3: #E34003;
+$secondary-4: #B13000;
+
+$secondary2-0: #A31DA8;
+$secondary2-1: #CA65CD;
+$secondary2-2: #B33CB7;
+$secondary2-3: #8F0394;
+$secondary2-4: #6F0173;
+
+$complement-0: #E32763;
+$complement-1: #EF759C;
+$complement-2: #E84B7D;
+$complement-3: #CA0342;
+$complement-4: #9D0032;
+
+.main-bg { background-color: $primary-0;}
+.alt-bg { background-color: $secondary-0; }
+.other-bg {background-color: $secondary2-0;}
+.important-bg { background-color: $complement-0;}
+
+.navbar-inverse {
+  .navbar-brand {
+    color: #FFFFFF;  
+  }
+
+  .navbar-brand:hover{
+    color: $primary-3;
+  }
+
+  .navbar-nav li a:hover{
+    color: $primary-2;
+  }
+
+  .navbar-nav .active a {
+    color: $primary-3;
+  }
+
+  .navbar-nav a .active:hover{
+    color: $primary-2;
+  }
+}
+
+.error-msg {
+  padding: 5px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.test-border {
+  border: 2px solid green;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+}

@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-xs-12">
+    <% unless @track %>
+      <h1 class="text-danger">Track Not Found! :(</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 well well-md">
+    <h3 class="text-warning">We couldn't find a track with id: <%= @id %></h3>
+  </div>
+</div>
+    <% else %>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 well well-md">
+        <h3>Title: <small><%= @track.title %></small></h3>
+        <h3>Author: <small><%= @track.author %></small></h3>
+
+      <% unless @track.url.empty? %>
+        <h3>Url: <small><a href='<%= @track.url %>'><%= @track.url %></a></small></h3>
+      <% end %>
+
+        <h3 class="">Upvotes: <small><%= @track.upvotes %></small></h3>
+        <h3 class="">Overall Rating: 
+          <% (@track.rating).times do |num| %>
+              <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+        </h3>
+  </div>
+</div>
+    <% end %>
+
+<% if logged_in? && !has_reviewed?(@track) %>
+<div class="row">
+  <div class="col-xs-12 well well-md">
+    <h3>Write a Review:</h3>
+    <br />
+    <form method="POST" action="/tracks/<%= @track.id %>/review" role="form">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" name="title" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea name="content" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="score">Score: </label>
+        <select name="score" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected="selected">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <button type="submit" class="pull-right btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
+<% end %>
+
+<% unless @track.nil? || @track.reviews.empty? %>
+
+<h2>Reviews:</h2> 
+
+<div class="row">
+  <div class="col-xs-12 well well-md">
+    <ul class="list-group">
+    <% @track.reviews.each do |review| %>
+      <li class="list-group-item">
+      <h3><%= review.title %><small>&nbsp;&nbsp;- <%= review.user.user_name %></small>
+        <% (review.score).times do |num| %>
+          <span class="pull-right glyphicon glyphicon-star"></span>
+        <% end %>
+      </h3>
+      <hr />
+      <% if logged_in? && get_user.id == review.user.id %>
+        <form method="POST" action="/tracks/<%= @track.id %>/review" role="form">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="pull-right btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+        </form>
+      <% end %>
+      <p><%= review.content %></p>
+      </li>
+      <br />
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<% end %>

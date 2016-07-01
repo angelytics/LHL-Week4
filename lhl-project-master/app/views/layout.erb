@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <!--
+        normalize.css removes cross-browser differences in defaults, e.g.,
+        differences in how form elements appear between Firefox and IE
+        See: http://necolas.github.com/normalize.css/
+        -->
+        <link rel="stylesheet" href="/stylesheets/normalize.css">
+        <!--
+        application.css is where you put your styles
+        -->
+        <link rel="stylesheet" href="/stylesheets/application.css">
+        <!-- Javascript! -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/javascript/application.js"></script>
+        <script type="text/javascript" src="/javascript/password-check.js"></script>
+        <script type="text/javascript" src="/javascript/feature-post-loader.js"></script>
+        <script type="text/javascript" src="/javascript/image-upload.js"></script>
+
+        <title>brag about it</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid" id="main-nav">
+                <!-- website name -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">brag about it.</a>
+                </div>
+                <!-- pages -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <% current_uri = request.env['PATH_INFO'] %>
+                    <% if current_uri === "/" %>
+                        <%= erb :nav_login %>
+                    <% else %>
+                        <%= erb :nav_dropdown %>
+                    <% end %>
+                </div>
+            </div>
+        </nav>
+        <%= yield %>
+    </body>
+</html>

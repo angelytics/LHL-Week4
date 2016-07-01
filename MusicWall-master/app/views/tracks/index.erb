@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="">Music App</h1>
+  </div>
+</div>
+
+<% unless @tracks.empty? %>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="text-center jumbotron main-bg">What People Are Listening To Now</h2>
+      <div class="well well-md">
+        <ul class="list-group">
+          <% @tracks.each do |track| %>
+            <li class="list-group-item"><a href='/tracks/<%= track.id %>'><%= "#{track.title} - #{track.author}" %></a>
+            <% unless track.url.empty? %>
+              - <a href='<%= track.url %>'><%= track.url %></a>
+            <% end %>
+
+            <% (track.rating).times do |num| %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+
+            <% if logged_in? %>
+              <a class='pull-right' href="/tracks/<%= track.id %>/upvote"><span class="glyphicon glyphicon-arrow-up"></span></a>
+            <% end %>
+            <span class='pull-right'><%= track.upvotes %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+</div>
+
+<% else %>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="error-msg important-bg">There's no tracks!</h2>
+    <div class="col-xs-8">
+    </div>
+
+    <div class="col-xs-4">
+      <a class="pull-right" href="/tracks/new">Post one?</a>
+    </div>
+  </div>
+</div>
+<% end %>

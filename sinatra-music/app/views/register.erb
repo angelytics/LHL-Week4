@@ -1,0 +1,27 @@
+<h1 class='text-center'> Registration </h1> 
+
+<% if @user && @user.errors.any? %>
+	<div>
+		<h3>
+			<strong>Some issues with your message, please fix them:</strong>
+		</h3> 
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+				<li class="alert alert-danger" role='alert'><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<form method="post" action="/register">
+	<div	class="form-group">
+		<label for="username"><i class="fa fa-user-plus">Username</i> </label>
+		<input type="username" class="form-control" placeholder="Username" name="username">
+		<label for="password"> <i class="fa fa-key">Password</i> </label>
+		<input type="password" class="form-control" placeholder="Password" name="password">
+		<label for="email"> <i class="fa fa-envelope-o">Email </i>  </label>
+		<input type="email" class="form-control" placeholder="Email" name="email">
+		<label for="fullname"> <i class="fa fa-child">Full Name </i>  </label>
+		<input type="fullname" class="form-control" placeholder="Fullname" name="fullname">
+	</div><br> 
+	<input type="submit" value="submit" class="btn btn-primary btn-lg">
+</form>

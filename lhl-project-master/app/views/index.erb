@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row">
+		<% int = 0 %>
+		<% @posts.each_slice(3) do |slice| %>
+		<div class="row">
+			<% slice.each do |post| %>
+			<div class="col-md-3" id="placeholder">
+                <a><img class="image" src="<%= post.image %>"><a>
+                <div class="post-content">
+	                <h3><%= post.title %></h3>
+	                <!-- <h4><%= post.category %></h4> -->
+	                <p><%= post.content %><p>
+                </div>
+			</div>
+			<% end %>
+			<% if int == 0 %>
+				<div class="col-md-3">
+					<form action="/post/create" method="post">
+		                <legend>Brag about something new!</legend>
+		                <div class="form-group">
+		                    <label for="title-field">Title:</label>               
+		                    <input type="text" name="title" class="form-control" id="title-field">
+		                </div>
+		                <div class="form-group">
+		                    <label for="image-field">Image:</label>               
+		                    <input type="text" name="image" class="form-control" id="image-field">
+		                </div>
+		                <div class="form-group">
+		                    <label for="category-field">Category:</label>               
+		                    <input type="test" name="category" class="form-control" id="category-field">
+		                </div>
+		                <div class="form-group">
+		                    <label for="content-field">Content:</label>               
+		                    <!-- <input type="test" name="content" class="form-control" id="content-field"> -->
+		                    <textarea class="form-control" id="content-field" name="content" rows="5"></textarea>
+		                </div>
+		                <div class="form-group">
+		                    <button class="btn btn-default" type="submit" id="submit" >Submit</button>
+		                </div>
+		            </form>
+				</div>
+				<% int = 1 %>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>

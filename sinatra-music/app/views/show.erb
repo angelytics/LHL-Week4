@@ -1,0 +1,31 @@
+<h1><%= @song.title %> </h1> 
+<h3>By : <%= @song.artist%> </h3> 
+<% unless @song.url.nil? %>
+	<% if  @music.url.match(/youtube/) %>
+		<iframe id="player" type="text/html" width="640" height="32"
+			src="http://www.youtube.com/embed/<%= @music.url.split("=")[1]%>?autoplay=1"
+			frameborder="0"></iframe>
+
+		<img src="http://img.youtube.com/vi/<%= @music.url.split("=")[1]%>/0.jpg" height="200", width="200" class="img-circle">
+	<% else%>
+		<audio src="<%=@music.url%>" controls>	
+		<embed 
+		src="<%=@music.url%>"
+		width="180"
+		height="90"
+		loop="false"
+		autostart="false" />
+		</audio>
+	<% end %>
+<% end %>
+<p>Added on: <%= @music.created_at %> </p> 
+<div class="row">
+	<div class="col-sm-offset-0 col-sm-8">
+		<h2> Reviews </h2> 
+		<form method="post" action="/music/show">
+			<input type="text" class='form-control input-lg' name='comment'>
+	<input type="submit" value="submit" class="btn btn-primary btn-lg">
+			<p> and stars goes here </p>
+		</form> 
+	</div> 
+</div> 

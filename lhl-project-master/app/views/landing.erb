@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        	<h1>What's the point?</h1>
+        	<p>Do you feel guilty when telling your friends how awesome your cooked to perfection Crab-Stuffed Lobster Tail was? Everyday, hundreds of people brag about the extremely cool things they've done but everyone just thinks they're just a pompous asshole.</p>
+        	<strong>We wanted to help solve this problem</strong>
+        	<br>
+        	<br>
+            <form action="/signup" method="post" id="form">
+                <legend>Sign up!</legend>
+                <div class="form-group">
+                    <!-- <label for="first-name-field">First name:</label> -->               
+                    <input type="name" name="firstname" class="form-control" id="first-name-field" placeholder="John">
+                    <input type="name" name="lastname" class="form-control" id="last-name-field" placeholder="Smith">
+                </div>
+                <!-- <div class="form-group"> -->
+                    <!-- <label for="last-name-field">Last name:</label> -->               
+                    <!-- <input type="name" name="lastname" class="form-control" id="last-name-field" placeholder="Enter your last name..."> -->
+                <!-- </div> -->
+                <div class="form-group">
+                    <!-- <label for="email-field">Email:</label> -->               
+                    <input type="email" name="username" class="form-control" id="email-field" placeholder="john@brag.com">
+                </div>
+                <div class="form-group">
+                    <!-- <label for="signup-password-field">Password:</label> -->               
+                    <input type="password" name="password" class="form-control" id="password-field" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <!-- <label for="signup-retype-password-field">Retype password:</label> -->               
+                    <input type="password" class="form-control" id="retype-password-field" placeholder="Retype Password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" id="btn-submit" type="submit">Submit</button>
+                    <span id="error-msg"><span>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+        	<h1>Featured Posts</h1>
+        	<!-- <p>could set up and ajax function that will randomly pull posts that have been created</p>
+        	<p>Pseudoish-code
+        		- arr = Post.all
+        		- int = arr.size
+        		- random number between 0 and size - 1
+        		- choose a new post every x amount of secs</p>
+        	<p>probs need to create a new action /post/all that will return some json?</p> -->
+        	<div class="jumbotron">
+                <% if @post %>
+            		<h3><%= @post.title %></h3>
+                    <img src="<%= @post.image %>">
+                    <h4><%= @post.category %></h4>
+                    <p><%= @post.content %><p>
+                <% end %>
+        	</div>
+        </div>
+    </div>
+</div>
+
+
